@@ -1,0 +1,42 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual Environment
+venv/
+.venv/
+env/
+
+# IDE
+.idea/
+.vscode/
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+
+# Environment variables
+.env
+
+# Database (generated at runtime)
+*.db
+
+# Python cache
+.pytest_cache/
+
+# Compiled files
+*.so
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Generated / intermediate datasets
+data/cleaned_file.csv
+data/getdata.csv
+data/data1.CSV
+data/data2.csv
