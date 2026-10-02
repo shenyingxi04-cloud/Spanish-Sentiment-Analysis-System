@@ -1,17 +1,19 @@
 # Spanish Sentiment Analysis & Intelligent Recommendation System
 
-An intelligent web-based system for Spanish text sentiment analysis and personalized recommendation. The project integrates natural language processing (NLP), keyword extraction, recommendation algorithms, and data visualization to provide sentiment insights and user-oriented recommendations.
+A web-based system for Spanish review sentiment analysis and personalized recommendation. It combines a pretrained multilingual BERT sentiment model, spaCy keyword extraction, user-similarity-based recommendation, and data visualization in a Flask web application.
+
+Undergraduate graduation project, Soochow University (2025–2026).
 
 ---
 
 ## Features
 
-- 🔍 Spanish sentiment analysis
-- 🤖 Intelligent recommendation engine
-- 📝 Keyword extraction
-- 📊 Data visualization and chart generation
-- 💾 User feedback database management
-- 🌐 Simple web interface for interaction
+- **Spanish sentiment analysis**: predicts a 1–5 star sentiment score for Spanish reviews using a pretrained multilingual BERT model
+- **Keyword extraction**: extracts representative keywords from reviews with spaCy
+- **Personalized recommendation**: combines sentiment results with user preferences and user similarity
+- **Data visualization**: charts for sentiment distribution and recommendation results
+- **User feedback storage**: stores feedback and history in SQLite
+- **Web interface**: simple Flask-based interface for interaction
 
 ---
 
@@ -19,82 +21,69 @@ An intelligent web-based system for Spanish text sentiment analysis and personal
 
 ```
 .
-├── backend/          # Flask backend and utility functions
-├── frontend/         # Frontend templates
-├── models/           # NLP models and recommendation modules
-├── scripts/          # Data preprocessing scripts
-├── tests/            # Model evaluation scripts
-├── data/             # Sample datasets and database
-└── README.md
+|-- backend/      # Flask app, chart and file utilities
+|-- frontend/     # HTML templates
+|-- models/       # Sentiment analysis, keyword extraction, recommendation, database modules
+|-- scripts/      # Data collection and cleaning scripts
+|-- tests/        # Model evaluation scripts
+|-- data/         # Sample datasets and database
+`-- README.md
 ```
 
 ---
 
 ## Tech Stack
 
-### Backend
-- Python
-- Flask
-- SQLite
-
-### NLP
-- Sentiment Analysis
-- Keyword Extraction
-- Recommendation Algorithm
-
-### Frontend
-- HTML
-- CSS
-- JavaScript
-
-### Data Processing
-- Pandas
-- NumPy
-
-### Visualization
-- Matplotlib
+| Area | Tools |
+| --- | --- |
+| Backend | Python, Flask, SQLite |
+| NLP | Hugging Face Transformers, [nlptown/bert-base-multilingual-uncased-sentiment](https://huggingface.co/nlptown/bert-base-multilingual-uncased-sentiment), spaCy |
+| Data processing | Pandas, NumPy |
+| Visualization | Matplotlib |
+| Frontend | HTML, CSS, JavaScript (Flask templates) |
 
 ---
 
 ## Main Modules
 
-### Sentiment Analysis
-
-Analyze Spanish text and predict sentiment polarity.
-
-### Recommendation Engine
-
-Generate personalized recommendations based on user preferences and similarity.
-
-### Keyword Extraction
-
-Extract representative keywords from Spanish text for further analysis.
-
-### Database Management
-
-Store user feedback and recommendation history using SQLite.
-
-### Data Visualization
-
-Generate charts for sentiment distribution and recommendation results.
+| Module | File | Description |
+| --- | --- | --- |
+| Sentiment analysis | `models/sentiment_analyzer.py` | Predicts sentiment of Spanish text with multilingual BERT |
+| Keyword extraction | `models/keyword_extractor.py` | Extracts keywords from reviews using spaCy |
+| Recommendation engine | `models/recommendation_engine.py` | Generates recommendations from user preferences and similarity |
+| Database management | `models/database_manager.py` | Stores user feedback and history in SQLite |
+| Visualization | `models/plotter.py`, `backend/chart_utils.py` | Generates sentiment and recommendation charts |
+| Data pipeline | `scripts/get_data.py`, `scripts/wash_data.py` | Collects and cleans review data |
+| Evaluation | `tests/evaluate_model.py` | Evaluates sentiment model performance |
 
 ---
 
-## Installation
+## Getting Started
 
-Clone the repository
+**1. Clone the repository**
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/spanish-sentiment-analysis.git
+git clone https://github.com/shenyingxi04-cloud/Spanish-Sentiment-Analysis-System.git
+cd Spanish-Sentiment-Analysis-System
 ```
 
-Install dependencies
+**2. Install dependencies**
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Run the application
+**3. Download the sentiment model**
+
+Before the first run, open `models/model_local.py`, set `save_directory` to a local folder on your machine, then run:
+
+```bash
+python models/model_local.py
+```
+
+Make sure the model path used by the sentiment analysis module points to the same folder.
+
+**4. Run the application**
 
 ```bash
 python backend/app.py
@@ -104,10 +93,10 @@ python backend/app.py
 
 ## Future Improvements
 
-- Fine-tune transformer-based sentiment models
+- Fine-tune multilingual BERT on the project's own Spanish review data and compare with the pretrained baseline
+- Replace hardcoded paths with configuration files
 - Deploy the application online
 - Improve recommendation accuracy
-- Add multilingual support
 - Optimize UI/UX
 
 ---
